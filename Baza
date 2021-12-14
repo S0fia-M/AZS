@@ -1,0 +1,22 @@
+create database [AZS]
+go
+
+create table [dbo].[Station]
+(
+[Address] [varchar] (150) not null,
+[Station_Id] [int] not null
+constraint [PK_Test] primary key clustered (Station_Id ASC) on [PRIMARY]
+)
+go
+
+create table [dbo].[Data]
+(
+[Id_Data] [int] not null identity(1,1),
+[Name] [varchar] (150) not null,
+[Price] [decimal] (38,2) not null,
+[AmountOfFuel] [int] not null,
+[Station_Id] [int] not null,
+constraint [PK_Data] primary key clustered (Id_Data ASC) on [PRIMARY],
+constraint [FK_Test_Data] foreign key ([Station_Id]) references [dbo].[Station]([Station_Id])
+)
+go
